@@ -10,7 +10,8 @@ window.onload = () => {
     // Intentar reproducir automáticamente
     ringtone.play().catch(error => {
         console.warn('El navegador bloqueó la reproducción automática. Esperando interacción del usuario.');
-        // Mostrar un botón de interacción
+
+        // Solo mostrar el botón si el audio no puede reproducirse automáticamente
         const permissionButton = document.createElement('button');
         permissionButton.textContent = 'Habilitar audio';
         permissionButton.style.position = 'absolute';
@@ -22,7 +23,7 @@ window.onload = () => {
         document.body.appendChild(permissionButton);
 
         permissionButton.addEventListener('click', () => {
-            ringtone.play();
+            ringtone.play(); // Reproducir el tono tras la interacción del usuario
             document.body.removeChild(permissionButton); // Ocultar el botón después de la interacción
         });
     });
