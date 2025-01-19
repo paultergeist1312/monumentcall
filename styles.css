@@ -1,86 +1,95 @@
-/* Aseguramos que el cuerpo y el contenedor principal ocupen toda la pantalla */
-body, html {
+/* General Styles */
+body {
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5; /* Color de fondo */
+    background-color: #f5f5f5;
     display: flex;
-    justify-content: center; /* Centrar horizontalmente */
-    align-items: center; /* Centrar verticalmente */
-}
-
-/* La pantalla de llamada también debe ocupar el 100% del viewport */
-.call-screen {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
-    text-align: center;
-    background-color: #eaf4fc; /* Fondo más claro para un diseño moderno */
-    box-sizing: border-box;
+    height: 100vh;
+}
+
+.call-screen {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #ffffff;
+    border-radius: 20px;
+    width: 90%;
+    max-width: 400px;
+    height: 600px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     padding: 20px;
 }
 
-/* Ajustes para la imagen de perfil */
+/* Profile Section */
+.profile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-top: 20px;
+}
+
 .profile-pic {
     width: 150px;
     height: 150px;
-    border-radius: 50%; /* Hace que la imagen sea circular */
-    margin-bottom: 20px;
-    border: 3px solid #4caf50; /* Borde verde */
+    border-radius: 50%;
+    object-fit: cover;
+    border: 4px solid #ccc;
 }
 
-/* Nombre del contacto */
 .contact-name {
-    font-size: 1.8rem;
-    font-weight: 500;
+    margin-top: 15px;
+    font-size: 1.5rem;
     color: #333;
-    margin-bottom: 30px;
 }
 
-/* Controles (botones) */
+/* Controls Section */
 .controls {
     display: flex;
-    gap: 20px;
+    justify-content: space-between;
+    width: 80%;
+    margin-bottom: 20px;
 }
 
-/* Estilo general para los botones */
 .btn {
-    width: 80px;
-    height: 80px;
+    width: 70px;
+    height: 70px;
     border-radius: 50%;
     border: none;
-    font-size: 1.5rem;
-    font-weight: bold;
     color: white;
+    font-size: 1.5rem;
     display: flex;
-    justify-content: center;
     align-items: center;
+    justify-content: center;
     cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s;
 }
 
-/* Botón de colgar */
+.btn:hover {
+    transform: scale(1.1);
+}
+
 .hang-up {
-    background-color: #f44336; /* Rojo */
+    background-color: #ff4d4d;
 }
 
-/* Botón de descolgar */
 .pick-up {
-    background-color: #4caf50; /* Verde */
+    background-color: #4caf50;
 }
 
-/* Animación de vibración para el botón de descolgar */
+.vibrate {
+    animation: vibrate 0.5s linear infinite;
+}
+
 @keyframes vibrate {
-    0% { transform: translateX(-4px); }
-    25% { transform: translateX(4px); }
-    50% { transform: translateX(-4px); }
-    75% { transform: translateX(4px); }
-    100% { transform: translateX(0); }
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-4px); }
+    50% { transform: translateX(4px); }
+    75% { transform: translateX(-4px); }
 }
 
 .vibrate {
