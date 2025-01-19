@@ -1,93 +1,88 @@
-/* General Styles */
-body {
+/* Aseguramos que el cuerpo y el contenedor principal ocupen toda la pantalla */
+body, html {
     margin: 0;
     padding: 0;
+    width: 100%;
+    height: 100%;
     font-family: 'Roboto', sans-serif;
-    background-color: #f5f5f5;
+    background-color: #f5f5f5; /* Color de fondo */
     display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
 }
 
+/* La pantalla de llamada también debe ocupar el 100% del viewport */
 .call-screen {
+    width: 100%;
+    height: 100%;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
-    justify-content: space-between;
-    background-color: #ffffff;
-    border-radius: 20px;
-    width: 90%;
-    max-width: 400px;
-    height: 600px;
-    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    background-color: #eaf4fc; /* Fondo más claro para un diseño moderno */
+    box-sizing: border-box;
     padding: 20px;
 }
 
-/* Profile Section */
-.profile {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    margin-top: 20px;
-}
-
+/* Ajustes para la imagen de perfil */
 .profile-pic {
     width: 150px;
     height: 150px;
-    border-radius: 50%;
-    object-fit: cover;
-    border: 4px solid #ccc;
+    border-radius: 50%; /* Hace que la imagen sea circular */
+    margin-bottom: 20px;
+    border: 3px solid #4caf50; /* Borde verde */
 }
 
+/* Nombre del contacto */
 .contact-name {
-    margin-top: 15px;
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    font-weight: 500;
     color: #333;
+    margin-bottom: 30px;
 }
 
-/* Controls Section */
+/* Controles (botones) */
 .controls {
     display: flex;
-    justify-content: space-between;
-    width: 80%;
-    margin-bottom: 20px;
+    gap: 20px;
 }
 
+/* Estilo general para los botones */
 .btn {
-    width: 70px;
-    height: 70px;
+    width: 80px;
+    height: 80px;
     border-radius: 50%;
     border: none;
-    color: white;
     font-size: 1.5rem;
+    font-weight: bold;
+    color: white;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
     cursor: pointer;
-    transition: transform 0.2s;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
-.btn:hover {
-    transform: scale(1.1);
-}
-
+/* Botón de colgar */
 .hang-up {
-    background-color: #ff4d4d;
+    background-color: #f44336; /* Rojo */
 }
 
+/* Botón de descolgar */
 .pick-up {
-    background-color: #4caf50;
+    background-color: #4caf50; /* Verde */
+}
+
+/* Animación de vibración para el botón de descolgar */
+@keyframes vibrate {
+    0% { transform: translateX(-2px); }
+    25% { transform: translateX(2px); }
+    50% { transform: translateX(-2px); }
+    75% { transform: translateX(2px); }
+    100% { transform: translateX(0); }
 }
 
 .vibrate {
-    animation: vibrate 0.5s linear infinite;
-}
-
-@keyframes vibrate {
-    0%, 100% { transform: translateX(0); }
-    25% { transform: translateX(-4px); }
-    50% { transform: translateX(4px); }
-    75% { transform: translateX(-4px); }
+    animation: vibrate 0.5s ease-in-out;
 }
