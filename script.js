@@ -98,14 +98,14 @@ function startCall() {
     // Colocar el botón de colgar en su posición inicial (izquierda)
     hangUpButton.style.position = 'absolute';
     hangUpButton.style.bottom = '20px';
-    hangUpButton.style.left = '20%'; // Inicia desde el lado izquierdo
+    hangUpButton.style.left = '20%'; // Posición inicial a la izquierda
     hangUpButton.style.transform = 'translateX(0)';
-    hangUpButton.style.transition = 'all 0.5s ease'; // Transición suave para moverlo
+    hangUpButton.style.transition = 'all 0.5s ease'; // Animación suave para moverlo
 
     // Mover el botón de colgar hacia el centro después de un pequeño retardo
     setTimeout(() => {
-        hangUpButton.style.left = '50%';
-        hangUpButton.style.transform = 'translateX(-50%)'; // Centrar horizontalmente
+        hangUpButton.style.left = '50%'; // Mover al centro
+        hangUpButton.style.transform = 'translateX(-50%)'; // Centrar correctamente
     }, 50); // Asegura que los estilos iniciales sean aplicados antes de moverlo
 
     // Reproducir audio correspondiente al idioma seleccionado
