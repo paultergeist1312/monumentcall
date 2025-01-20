@@ -90,16 +90,19 @@ function stopRingtoneAndVibration() {
 function startCall() {
     stopRingtoneAndVibration(); // Detener tono de llamada y vibración
 
-    // Ocultar el botón de descolgar y centrar el de colgar
+    // Ocultar el botón de descolgar con un desplazamiento suave
     const pickUpButton = document.querySelector('.pick-up');
     const hangUpButton = document.querySelector('.hang-up');
-    pickUpButton.style.display = 'none'; // Ocultar botón de descolgar
-    hangUpButton.style.position = 'absolute';
-    hangUpButton.style.bottom = '20px';
+
+    pickUpButton.style.opacity = '0'; // Hacer desaparecer el botón
+    pickUpButton.style.pointerEvents = 'none'; // Deshabilitar interacciones
+
+    // Mover el botón de colgar al centro desde su posición inicial
     hangUpButton.style.left = '50%';
     hangUpButton.style.transform = 'translateX(-50%)';
+    hangUpButton.style.opacity = '1'; // Hacer visible el botón
 
-    // Reproducir audio correspondiente al idioma seleccionado
+    // Reproducir el audio de la llamada
     const callAudioPath = selectedLanguage === 'es' ? 'audio/call_es.mp3' : 'audio/call_val.mp3';
     callAudio = new Audio(callAudioPath);
     callAudio.play();
