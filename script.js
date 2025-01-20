@@ -2,7 +2,6 @@
 let ringtone;
 let vibrationInterval;
 let selectedLanguage = 'es'; // Idioma predeterminado: español
-let callAudio; // Variable para el audio de la llamada en curso
 
 // Función para configurar el idioma seleccionado
 function selectLanguage(language) {
@@ -58,7 +57,7 @@ window.onload = () => {
             btn.style.border = 'none';
             btn.style.margin = '10px';
             btn.style.backgroundSize = 'cover';
-            btn.style.backgroundImage = url(${button.src});
+            btn.style.backgroundImage = `url(${button.src})`;
             btn.alt = button.alt;
             btn.addEventListener('click', () => selectLanguage(button.id));
             overlay.appendChild(btn);
@@ -89,40 +88,15 @@ function stopRingtoneAndVibration() {
 // Función para manejar la acción de descolgar
 function startCall() {
     stopRingtoneAndVibration(); // Detener tono de llamada y vibración
-
-    // Ocultar el botón de descolgar y centrar el de colgar
-    const pickUpButton = document.querySelector('.pick-up');
-    const hangUpButton = document.querySelector('.hang-up');
-    pickUpButton.style.display = 'none'; // Ocultar botón de descolgar
-    hangUpButton.style.position = 'absolute';
-    hangUpButton.style.bottom = '20px';
-    hangUpButton.style.left = '50%';
-    hangUpButton.style.transform = 'translateX(-50%)';
-
-    // Reproducir audio correspondiente al idioma seleccionado
     const callAudioPath = selectedLanguage === 'es' ? 'audio/call_es.mp3' : 'audio/call_val.mp3';
-    callAudio = new Audio(callAudioPath);
+    const callAudio = new Audio(callAudioPath);
     callAudio.play();
+    alert('Has descolgado la llamada. Reproduciendo audio en ' + (selectedLanguage === 'es' ? 'español.' : 'valenciano.'));
 }
 
 // Función para manejar la acción de colgar
 function endCall() {
     stopRingtoneAndVibration(); // Detener tono de llamada y vibración
-
-    // Detener el audio de la llamada
-    if (callAudio) {
-        callAudio.pause();
-        callAudio.currentTime = 0;
-        callAudio = null; // Limpiar la referencia
-    }
-
-    // Restaurar botones
-    const pickUpButton = document.querySelector('.pick-up');
-    const hangUpButton = document.querySelector('.hang-up');
-    pickUpButton.style.display = 'block'; // Mostrar botón de descolgar
-    hangUpButton.style.position = ''; // Restaurar posición del botón de colgar
-    hangUpButton.style.bottom = '';
-    hangUpButton.style.left = '';
-    hangUpButton.style.transform = '';
+    alert('Has colgado la llamada.');
 }
 
