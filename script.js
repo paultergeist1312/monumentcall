@@ -58,7 +58,7 @@ window.onload = () => {
             btn.style.border = 'none';
             btn.style.margin = '10px';
             btn.style.backgroundSize = 'cover';
-            btn.style.backgroundImage = `url(${button.src})`;
+            btn.style.backgroundImage = url(${button.src});
             btn.alt = button.alt;
             btn.addEventListener('click', () => selectLanguage(button.id));
             overlay.appendChild(btn);
@@ -90,23 +90,14 @@ function stopRingtoneAndVibration() {
 function startCall() {
     stopRingtoneAndVibration(); // Detener tono de llamada y vibración
 
-    // Ocultar el botón de descolgar
+    // Ocultar el botón de descolgar y centrar el de colgar
     const pickUpButton = document.querySelector('.pick-up');
     const hangUpButton = document.querySelector('.hang-up');
     pickUpButton.style.display = 'none'; // Ocultar botón de descolgar
-
-    // Colocar el botón de colgar en su posición inicial (izquierda)
     hangUpButton.style.position = 'absolute';
     hangUpButton.style.bottom = '20px';
-    hangUpButton.style.left = '20%'; // Posición inicial a la izquierda
-    hangUpButton.style.transform = 'translateX(0)';
-    hangUpButton.style.transition = 'all 0.5s ease'; // Animación suave para moverlo
-
-    // Mover el botón de colgar hacia el centro después de un pequeño retardo
-    setTimeout(() => {
-        hangUpButton.style.left = '50%'; // Mover al centro
-        hangUpButton.style.transform = 'translateX(-50%)'; // Centrar correctamente
-    }, 50); // Asegura que los estilos iniciales sean aplicados antes de moverlo
+    hangUpButton.style.left = '50%';
+    hangUpButton.style.transform = 'translateX(-50%)';
 
     // Reproducir audio correspondiente al idioma seleccionado
     const callAudioPath = selectedLanguage === 'es' ? 'audio/call_es.mp3' : 'audio/call_val.mp3';
