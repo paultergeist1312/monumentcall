@@ -120,3 +120,7 @@ body {
     margin: 0 10px;
 }
 
+.hang-up {
+    transition: all 0.3s ease; /* Animación suave para el cambio de posición */
+}
+
