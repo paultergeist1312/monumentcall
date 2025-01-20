@@ -49,9 +49,10 @@ body {
 
 /* Controles (botones) */
 .controls {
+    position: relative; /* Permite posicionar los botones dentro de este contenedor */
+    width: 100%; /* Aseguramos que ocupe todo el ancho */
     display: flex;
     gap: 30px; /* Aumentar la distancia entre los botones */
-    position: absolute; /* Posicionar los botones de forma absoluta */
     bottom: 20px; /* Colocarlos cerca del borde inferior */
 }
 
@@ -79,6 +80,10 @@ body {
 
 .pick-up {
     background-color: #4caf50;
+    position: absolute;
+    bottom: 20px;
+    left: 30%; /* Posición inicial del botón de descolgar */
+    transition: all 0.3s ease; /* Transición suave para el movimiento */
 }
 
 .vibrate {
