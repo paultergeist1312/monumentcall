@@ -121,5 +121,9 @@ body {
 }
 
 .hang-up {
-    transition: all 0.3s ease; /* Animación suave para el cambio de posición */
+    transition: all 0.5s ease; /* Animación suave para el movimiento */
+    position: absolute;
+    bottom: 20px;
+    left: 20%; /* Posición inicial a la izquierda */
+    transform: translateX(0);
 }
