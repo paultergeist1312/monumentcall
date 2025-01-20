@@ -1,12 +1,12 @@
-// Declarar variables globales para el tono de llamada, efecto de vibración y el idioma
+// Declarar variables globales para el tono de llamada, efecto de vibración y el idioma seleccionado
 let ringtone;
 let vibrationInterval;
+let selectedLanguage = 'es'; // Idioma predeterminado: español
 
-// Función para configurar el audio según el idioma seleccionado
-function enableAudio(language) {
-    const audioPath = language === 'es' ? 'audio/tono_es.mp3' : 'audio/tono_val.mp3'; // Ruta según idioma
-    ringtone.src = audioPath;
-    ringtone.play();
+// Función para configurar el idioma seleccionado
+function selectLanguage(language) {
+    selectedLanguage = language; // Guardar el idioma seleccionado
+    ringtone.play(); // Reproducir el tono de llamada
     removeLanguageButtons(); // Quitar los botones después de la selección
 }
 
@@ -20,7 +20,7 @@ function removeLanguageButtons() {
 
 // Intentar reproducir el tono al cargar la página
 window.onload = () => {
-    ringtone = new Audio(); // Inicializar el objeto de audio sin cargar ningún archivo
+    ringtone = new Audio('audio/tono.mp3'); // Ruta del tono de llamada
     ringtone.loop = true;
 
     // Intentar reproducir automáticamente
@@ -59,7 +59,7 @@ window.onload = () => {
             btn.style.backgroundSize = 'cover';
             btn.style.backgroundImage = `url(${button.src})`;
             btn.alt = button.alt;
-            btn.addEventListener('click', () => enableAudio(button.id));
+            btn.addEventListener('click', () => selectLanguage(button.id));
             overlay.appendChild(btn);
         });
     });
@@ -87,12 +87,15 @@ function stopRingtoneAndVibration() {
 
 // Función para manejar la acción de descolgar
 function startCall() {
-    stopRingtoneAndVibration();
-    alert('Has descolgado la llamada.');
+    stopRingtoneAndVibration(); // Detener tono de llamada y vibración
+    const callAudioPath = selectedLanguage === 'es' ? 'audio/call_es.mp3' : 'audio/call_val.mp3';
+    const callAudio = new Audio(callAudioPath);
+    callAudio.play();
+    alert('Has descolgado la llamada. Reproduciendo audio en ' + (selectedLanguage === 'es' ? 'español.' : 'valenciano.'));
 }
 
 // Función para manejar la acción de colgar
 function endCall() {
-    stopRingtoneAndVibration();
+    stopRingtoneAndVibration(); // Detener tono de llamada y vibración
     alert('Has colgado la llamada.');
 }
